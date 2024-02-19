@@ -2,9 +2,9 @@ package com.onycom.imqa.selly;
 
 public class SellyRunnerDummy {
 
-    public SellyTestResultVo run() {
+    public SellyTestResult run() {
 
-        return new SellyTestResultVo();
+        return new SellyTestResult();
 
     }
 

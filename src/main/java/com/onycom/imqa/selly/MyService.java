@@ -12,8 +12,6 @@ public class MyService {    //수철씨가 만든 엔진 호출하는 서비스�
     @Async  //비동기로 진행 되도록
     public void doAsyncWork(WebSocketMessagingService webSocketMessagingService) {
 
-
-
         try {
             int maxCnt = 10;
 //            webSocketMessagingService.sendMessageToAll("/topic/greetings", maxCnt + "[]");

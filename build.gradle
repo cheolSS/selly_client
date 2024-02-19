@@ -19,12 +19,17 @@ configurations {
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'TestSelly.jar'
+    }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation files('libs/TestSelly.jar')
+    implementation files('imqa/dashboard/runner/RunnerConsole')
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

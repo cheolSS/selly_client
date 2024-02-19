@@ -1,6 +1,7 @@
 package com.onycom.imqa.selly;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@ComponentScan("imqa.dashboard.runner")
 public class ViewController {
 
     @Autowired
@@ -48,6 +50,7 @@ public class ViewController {
 
         myService.doAsyncWork(webSocketMessagingService);   // <-여기서 셀리 실행하세요
 
+
         return "processing";
     }
 //
@@ -61,7 +64,7 @@ public class ViewController {
     @GetMapping("/result")
     public String resultPage(Model model) {
 
-        model.addAttribute("result",new SellyTestResultVo());   //여기엔 값이 들어있는게 전달 되어야 함
+        model.addAttribute("result",new SellyTestResult());   //여기엔 값이 들어있는게 전달 되어야 함
         model.addAttribute("resultCount",new ProgressBarVo());
         return "result";
     }

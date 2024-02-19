@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class SellyClientApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RuntimeException {
         SpringApplication.run(SellyClientApplication.class, args);
     }
 
