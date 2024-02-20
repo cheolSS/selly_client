@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -35,10 +35,10 @@
                         <div class="form-group">
                             <div class="col">
                                 <div class="form-row">
-                                    <div class="col"><label class="col-form-label"  th:text="${file1}"></label>ElementList</div>
+                                    <div class="col"><label class="col-form-label"  th:text="${elementListDir}"></label>ElementList</div>
                                 </div>
                                 <div class="form-row1">
-                                    <div class="col"><label class="col-form-label" th:text="${file2}"></label>AB 대시보드 시나리오</div>
+                                    <div class="col"><label class="col-form-label" th:text="${scenarioListDir}"></label>AB 대시보드 시나리오</div>
                                 </div>
                                 <div>
                                     <h3>성공 : 10회</h3>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col"><label class="col-form-label">테스트 브라우저</label></div>Chrome
-                                <div class="col"><label class="col-form-label" th:text="${browser}"></label></div>
+                                <div class="col"><label class="col-form-label" th:text="${whatDriver}"></label></div>
                             </div>
                             <div class="form-row">
                                 <div class="col" style="width: 400px;"><label class="col-form-label">로그</label></div>

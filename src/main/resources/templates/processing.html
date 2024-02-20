@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -16,7 +16,7 @@
         var maxCnt = -1;
 
         const stompClient = new StompJs.Client({
-            brokerURL: 'ws://localhost:8081/gs-guide-websocket'
+            brokerURL: 'ws://localhost:8080/gs-guide-websocket'
         });
 
         stompClient.onConnect = (frame) => {
@@ -98,10 +98,10 @@
                         <div class="col" style="width: 234px;"><label class="col-form-label">테스트 데이터</label></div>
                         <div class="col">
                             <div class="form-row">
-                                <div class="col"><label class="col-form-label"  th:text="${file1}"></label></div>
+                                <div class="col"><label class="col-form-label"  th:text="${elementListDir}"></label></div>
                             </div>
                             <div class="form-row">
-                                <div class="col"><label class="col-form-label" th:text="${file2}"></label></div>
+                                <div class="col"><label class="col-form-label" th:text="${scenarioListDir}"></label></div>
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="form-row">
                         <div class="col" style="width: 234px;"><label class="col-form-label">테스트 브라우저</label></div>
-                        <div class="col"><label class="col-form-label" th:text="${browser}"></label></div>
+                        <div class="col"><label class="col-form-label" th:text="${whatDriver}"></label></div>
                     </div>
                 </div>
                 <div class="form-row">
