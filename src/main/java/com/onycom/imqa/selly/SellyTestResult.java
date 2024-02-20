@@ -14,19 +14,18 @@ public class SellyTestResult {
     private String printLog;
     private int successTestResultCount;
     private int failTestResultCount;
-    private String scenarioListDir;
     private String testUrl;
     private String webBrowserType;
     private List<ImgScrDirWithTestResultVo> testReport = new ArrayList<>();
     private String ExcelDownloadDir;
 
-    public String getScenarioListDir() {
-        return scenarioListDir;
+    //    private String scenarioListDir;
+    // -> RunfileVo의 값 가져오기
+    private RunFileVo runFileVo;
+    public RunFileVo getRunFileVo() {
+        return runFileVo;
     }
 
-    public void setScenarioListDir(String scenarioListDir) {
-        this.scenarioListDir = scenarioListDir;
-    }
 
     public String getTestUrl() {
         return testUrl;

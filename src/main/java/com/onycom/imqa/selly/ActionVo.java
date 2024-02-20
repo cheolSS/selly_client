@@ -36,37 +36,5 @@ public class ActionVo {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-    //    @Autowired
-//    private String ActionName;
-//
-//    @Autowired
-//    private String ActionCode;
-//
-//    @Autowired
-//    private String Desc;
-//
-//    public String getActionName() {
-//        return ActionName;
-//    }
-//
-//    public void setActionName(String actionName) {
-//        ActionName = actionName;
-//    }
-//
-//    public String getActionCode() {
-//        return ActionCode;
-//    }
-//
-//    public void setActionCode(String actionCode) {
-//        ActionCode = actionCode;
-//    }
-//
-//    public String getDesc() {
-//        return Desc;
-//    }
-//
-//    public void setDesc(String desc) {
-//        Desc = desc;
-//    }
 }
 

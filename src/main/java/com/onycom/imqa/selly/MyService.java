@@ -1,5 +1,6 @@
 package com.onycom.imqa.selly;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -7,9 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class MyService {    //수철씨가 만든 엔진 호출하는 서비스를 스프링 빈으로 전환
+public class MyService {
 
-    @Async  //비동기로 진행 되도록
+    @Autowired RunFileVo runFileVo;
+
+    @Async
     public void doAsyncWork(WebSocketMessagingService webSocketMessagingService) {
 
         try {

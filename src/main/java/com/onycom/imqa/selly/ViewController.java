@@ -1,6 +1,5 @@
 package com.onycom.imqa.selly;
 
-import imqa.dashboard.runner.RunnerConsole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -15,58 +14,61 @@ import org.springframework.web.multipart.MultipartFile;
 @ComponentScan("imqa.dashboard.runner")
 public class ViewController {
 
-    @Autowired
+    RunFileVo runFileVo;
+    SellyTestResult sellyTestResult;
+    DriverVo driverVo;
     MyService myService;
-
     @Autowired
     WebSocketMessagingService webSocketMessagingService;
+
 
     @GetMapping("/")
     public String mainPage() {
         return "index";
     }
 
+
+
     @GetMapping("/input")
     public String uploadFormPage() {
         return "inputForm";
     }
 
+
     @PostMapping("/processing")
-    public String processingPage(@RequestParam("file1") MultipartFile file1,
-                                 @RequestParam("file2") MultipartFile file2,
+    public String processingPage(@RequestParam("elementListDir") MultipartFile elementListDir,
+                                 @RequestParam("scenarioListDir") MultipartFile scenarioListDir,
                                  @RequestParam("testUrl") String testUrl,
-                                 @RequestParam("browser") String webBrowserType,
+                                 @RequestParam("excelDownloadDir") String excelDownloadDir,
+                                 @RequestParam("whatDriver") String whatDriver,
+                                 @RequestParam("whatDriverSetupFolderDir") String whatDriverSetupFolderDir,
                                  ModelMap modelMap) {
 
-        System.out.println(file1.getOriginalFilename());
-        System.out.println(file2.getOriginalFilename());
-        System.out.println(testUrl);
-        System.out.println(webBrowserType);
 
-
-        modelMap.addAttribute("file1", file1.getOriginalFilename());
-        modelMap.addAttribute("file2", file2.getOriginalFilename());
+        modelMap.addAttribute("elementListDir", elementListDir.getOriginalFilename());
+        modelMap.addAttribute("scenarioListDir", scenarioListDir.getOriginalFilename());
         modelMap.addAttribute("testUrl", testUrl);
-        modelMap.addAttribute("browser", webBrowserType);
+        modelMap.addAttribute("excelDownloadDir", excelDownloadDir);
+        modelMap.addAttribute("whatDriver", whatDriver);
+        modelMap.addAttribute("whatDriverSetupFolderDir", whatDriverSetupFolderDir);
 
-        myService.doAsyncWork(webSocketMessagingService);   // <-여기서 셀리 실행하세요
+        runFileVo.setMetricList(elementListDir.getOriginalFilename());
+        runFileVo.setScenarioList(scenarioListDir.getOriginalFilename());
+        sellyTestResult.setTestUrl(testUrl);
+        sellyTestResult.setExcelDownloadDir(excelDownloadDir);
+        driverVo.setWhatDriver(whatDriver);
+        driverVo.setWhatDriverSetupFolderDir(whatDriverSetupFolderDir);
 
-
+        myService.doAsyncWork(webSocketMessagingService);
         return "processing";
     }
-//
-//    @MessageMapping("/hello")
-//    @SendTo("/topic/greetings")
-//    public String greeting(String message) throws Exception {
-//        System.out.println(message);
-//        return "Hello, " + message + "!";
-//    }
 
     @GetMapping("/result")
     public String resultPage(Model model) {
 
-        model.addAttribute("result",new SellyTestResult());   //여기엔 값이 들어있는게 전달 되어야 함
-        model.addAttribute("resultCount",new ProgressBarVo());
+        model.addAttribute("result",new SellyTestResult());
+        model.addAttribute("resultSuccessCount",new ProgressBarVo().getFailTestResultCount());
+        model.addAttribute("resultFailCount",new ProgressBarVo().getSuccessTestResultCount());
         return "result";
     }
 
